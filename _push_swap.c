@@ -42,7 +42,8 @@ int main(int argc, char *argv[])
         ft_error(0);
     else if (argc == 2)
         argv = ft_split(argv[1], ' ');
-    init_stack_a(&stack_a, argv);
+    else if (argc > 2)
+        init_stack_a(&stack_a, argv + 1);
     ft_sort(&stack_a);
     exit(1);
     /* while (stack_a)

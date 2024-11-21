@@ -20,6 +20,8 @@ void	ft_stackadd_back(t_stack **stack, t_stack *new);
 t_stack	*ft_stacknew(int nbr);
 int check_duplicate(t_stack *stack_a);
 bool check_sorted(t_stack *stack_a);
+t_stack *find_min(t_stack *stack_a);
+t_stack *find_max(t_stack *stack_a);
 int	atoi2(const char *str);
 char	**ft_split(char const *s, char c);
 void ft_error(int error_status);

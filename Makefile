@@ -8,7 +8,8 @@ FUNCTIONS = _push_swap.c \
 			operations.c \
 			check_duplicate.c \
 			ft_split.c \
-			check_sorted.c
+			check_sorted.c \
+			find_min_and_max.c
  
 OBJS = _push_swap.o \
 		atoi2.o \
@@ -18,7 +19,8 @@ OBJS = _push_swap.o \
 		operations.o \
 		check_duplicate.o \
 		ft_split.o \
-		check_sorted.o
+		check_sorted.o \
+		find_min_and_max.o
 
 NAME = push_swap.a
 
