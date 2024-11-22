@@ -20,15 +20,17 @@ static void init_stack_a(t_stack **stack_a, char *argv[])
         ft_stackadd_back(stack_a, ft_stacknew(j));
         i++;
     }
-    printf("%d\n", (*stack_a)->nbr);
-    printf("%d\n", (*stack_a)->next->nbr);
-    printf("%d\n", (*stack_a)->next->next->nbr);
-    exit(1);
     if (!stack_a || check_duplicate(*stack_a))
     {
         ft_free(stack_a);
         ft_error(2);
     }
+    for (int i = 0; i < 9; i++)
+    {
+        printf("%d\n", (*stack_a)->nbr);
+        (*stack_a) = (*stack_a)->next;
+    }
+    exit(1);
 }
 int main(int argc, char *argv[])
 {
@@ -42,8 +44,7 @@ int main(int argc, char *argv[])
         ft_error(0);
     else if (argc == 2)
         argv = ft_split(argv[1], ' ');
-    else if (argc > 2)
-        init_stack_a(&stack_a, argv + 1);
+    init_stack_a(&stack_a, argv + 1);
     ft_sort(&stack_a);
     exit(1);
     /* while (stack_a)

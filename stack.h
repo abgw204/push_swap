@@ -22,6 +22,7 @@ int check_duplicate(t_stack *stack_a);
 bool check_sorted(t_stack *stack_a);
 t_stack *find_min(t_stack *stack_a);
 t_stack *find_max(t_stack *stack_a);
+void	ft_lstadd_front(t_stack **lst, t_stack *new);
 int	atoi2(const char *str);
 char	**ft_split(char const *s, char c);
 void ft_error(int error_status);
