@@ -47,11 +47,11 @@ void	ft_stackadd_back(t_stack **stack, t_stack *new)
 	new->prev = current;
 }
 
-void	ft_lstadd_front(t_stack **lst, t_stack *new)
+void	ft_lstadd_front(t_stack **lst, t_stack **new)
 {
 	if (lst == NULL || new == NULL)
 		return ;
-	new->next = *lst;
-	*lst = new;
-	(*lst)->prev = NULL;
+	(*new)->next = *lst;
+	(*new)->prev = NULL;
+	*lst = *new;
 }

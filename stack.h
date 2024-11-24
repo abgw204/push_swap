@@ -7,10 +7,6 @@ typedef struct s_stack
 {
 	int            nbr;
     int            index;
-    int             push_cost;
-    bool            above_mediam;
-    bool            cheapest;
-    struct s_stack  *target_node;
 	struct s_stack	*next;
     struct s_stack  *prev;
 } t_stack;
@@ -22,7 +18,7 @@ int check_duplicate(t_stack *stack_a);
 bool check_sorted(t_stack *stack_a);
 t_stack *find_min(t_stack *stack_a);
 t_stack *find_max(t_stack *stack_a);
-void	ft_lstadd_front(t_stack **lst, t_stack *new);
+void	ft_lstadd_front(t_stack **lst, t_stack **new);
 int	atoi2(const char *str);
 char	**ft_split(char const *s, char c);
 void ft_error(int error_status);
