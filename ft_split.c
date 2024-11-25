@@ -95,7 +95,7 @@ char	**ft_split(char const *s, char c)
 	while (i < count_words(s, c))
 	{
 		size = find_size(s, c, &index);
-		array[i] = (char *)calloc(size + 1, 1);
+		array[i] = (char *)ft_calloc(size + 1, 1);
 		if (!array[i])
 			return (verify(array, i));
 		i++;

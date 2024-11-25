@@ -1,33 +1,55 @@
 #include "stack.h"
-/*  swap a = sa
-    swap b = sb
-    swap a and b = ss
+/*  swap a = sa | DONE
+    swap b = sb | DONE
+    swap a and b = ss | DONE
     push a = pa | DONE
     push b = pb | DONE
-    rotate a = ra
-    rotate b = rb
-    rotate and b = rr
-    reverse rotate a = rra
-    reverse rotate b = rrb
-    reverse rotate a and b = rrr
+    rotate a = ra | DONE
+    rotate b = rb | DONE
+    rotate and b = rr | DONE
+    reverse rotate a = rra | DONE
+    reverse rotate b = rrb | DONE
+    reverse rotate a and b = rrr | DONE
 */
+
+// Faz um swap nos dois primeiros nodes do stack A
 
 void ft_sa(t_stack **a)
 {
     t_stack *temp;
-    t_stack *third_node;
 
-    if (ft_stacksize(*a) > 2)
-    {
-      third_node = (*a)->next->next;
-      temp = (*a)->next;
-      third_node->prev = *a;
-      temp->next = *a;
-      (*a)->prev = temp;
-      (*a)->next = third_node;
-      temp->prev = NULL;
-    }
+    temp = (*a)->next;
+    (*a)->next = temp->next;
+    (*a)->prev = temp;
+    temp->next = *a;
+    temp->prev = NULL;
+    *a = temp;
     write(1, "sa\n", 3);
+}
+
+// Faz um swap nos dois primeiros nodes do stack B
+
+void ft_sb(t_stack **b)
+{
+    t_stack *temp;
+
+    temp = (*b)->next;
+    (*b)->next = temp->next;
+    (*b)->prev = temp;
+    temp->next = *b;
+    temp->prev = NULL;
+    *b = temp;
+    write(1, "sb\n", 3);
+}
+
+// Faz um swap nos dois primeiros nodes do stack A e nos dois primeiros
+// nodes do stack B
+
+void ft_ss(t_stack **a, t_stack **b)
+{
+  ft_sa(a);
+  ft_sb(b);
+  write(1, "ss\n", 3);
 }
 
 // Empurra 1 node do stack A para o stack B
@@ -48,9 +70,10 @@ void ft_pa(t_stack **stack1, t_stack **stack2)
   {
     temp = (*stack1)->next;
     (*stack1)->next = NULL;
-    ft_lstadd_front(stack2, stack1);
+    ft_stackadd_front(stack2, stack1);
     *stack1 = temp;
   }
+  write(1, "pa\n", 3);
 }
 
 // Empurra 1 node do stack B para o stack A
@@ -71,9 +94,92 @@ void ft_pb(t_stack **stack1, t_stack **stack2)
   {
     temp = (*stack1)->next;
     (*stack1)->next = NULL;
-    ft_lstadd_front(stack2, stack1);
+    ft_stackadd_front(stack2, stack1);
     *stack1 = temp;
   }
+  write(1, "pb\n", 3);
+}
+
+// Manda o primeiro elemento da pilha A para baixo,
+// empurrando todos os outros para cima.
+
+void ft_ra(t_stack **a)
+{
+  t_stack *temp;
+  t_stack *last_node;
+
+  temp = (*a)->next;
+  temp->prev = NULL;
+  last_node = ft_stacklast(*a);
+  last_node->next = *a;
+  (*a)->prev = last_node;
+  (*a)->next = NULL;
+  *a = temp;
+  write(1, "ra\n", 3);
+}
+
+// Manda o primeiro elemento da pilha B para baixo,
+// empurrando todos os outros para cima.
+
+void ft_rb(t_stack **b)
+{
+  t_stack *temp;
+  t_stack *last_node;
+
+  temp = (*b)->next;
+  temp->prev = NULL;
+  last_node = ft_stacklast(*b);
+  last_node->next = *b;
+  (*b)->prev = last_node;
+  (*b)->next = NULL;
+  *b = temp;
+  write(1, "rb\n", 3);
+}
+
+// Manda o primeiro elemento da pilha A e da pilha B para baixo,
+// empurrando todos os outros para cima.
+
+void ft_rr(t_stack **a, t_stack **b)
+{
+  ft_ra(a);
+  ft_rb(b);
+  write(1, "rr\n", 3);
+}
+
+// Manda o último elemento da pilha A para cima,
+// empurrando todos os outros para baixo.
+
+void ft_rra(t_stack **a)
+{
+  t_stack *last_node;
+
+  last_node = ft_stacklast(*a);
+  last_node->prev->next = NULL;
+  last_node->prev = NULL;
+  last_node->next = *a;
+  (*a)->prev = last_node;
+  *a = last_node;
+  write(1, "rra\n", 4);
+}
+
+void ft_rrb(t_stack **b)
+{
+  t_stack *last_node;
+
+  last_node = ft_stacklast(*b);
+  last_node->prev->next = NULL;
+  last_node->prev = NULL;
+  last_node->next = *b;
+  (*b)->prev = last_node;
+  *b = last_node;
+  write(1, "rrb\n", 4);
+}
+
+void ft_rrr(t_stack **a, t_stack **b)
+{
+  ft_rra(a);
+  ft_rrb(b);
+  write(1, "rrr\n", 4);
 }
 
 // Essa função printa os dois stacks levando em consideração
@@ -82,19 +188,15 @@ void ft_pb(t_stack **stack1, t_stack **stack2)
 // e caso stack A seja maior que stack B, printar stack A
 // até essa diferença, e depois printar até o tamanho total de stack A,
 // ou vice-versa.
-// Se forem do mesmo tamanho, basta printar enquanto for i for menor
+// Se forem do mesmo tamanho, basta printar enquanto i for menor
 // que stack A ou B, tanto faz (isso está no else).
 
 void print_stacks(t_stack *a, t_stack *b)
 {
   int a_size = ft_stacksize(a);
   int b_size = ft_stacksize(b);
-  int diff_size = 0;
+  int diff_size = a_size > b_size ? (a_size - b_size) : (b_size - a_size);
   int i = 0;
-  if (a_size > b_size)
-    diff_size = a_size - b_size;
-  else
-    diff_size = b_size - a_size;
 
   printf("Stack A size: %d\n", a_size);
   printf("\nStack B size: %d\n\n", b_size);
@@ -122,8 +224,6 @@ void print_stacks(t_stack *a, t_stack *b)
     }
     return ;
   }
-  
-
   if (a_size > b_size)
   {
     while (i < diff_size)
@@ -166,7 +266,6 @@ void print_stacks(t_stack *a, t_stack *b)
       i++;
     }
   }
-
 }
 
 int main()
@@ -174,34 +273,22 @@ int main()
   t_stack *a = NULL;
   t_stack *b = NULL;
 
-  ft_stackadd_back(&a, ft_stacknew(3));
+  /*ft_stackadd_back(&a, ft_stacknew(3));
   ft_stackadd_back(&a, ft_stacknew(5));
   ft_stackadd_back(&a, ft_stacknew(4));
   ft_stackadd_back(&a, ft_stacknew(9));
   ft_stackadd_back(&a, ft_stacknew(8));
   ft_stackadd_back(&a, ft_stacknew(7));
 
-  /*ft_stackadd_back(&b, ft_stacknew(9));
+  ft_stackadd_back(&b, ft_stacknew(9));
   ft_stackadd_back(&b, ft_stacknew(8));
   ft_stackadd_back(&b, ft_stacknew(7));
-  ft_stackadd_back(&b, ft_stacknew(6));*/
-
-  ft_sa(&a);
-  print_stacks(a, b);
-  exit(1);
-  printf("\npb pb\n\n");
-  ft_pa(&b, &a);
-  ft_pa(&b, &a);
-
-  print_stacks(a, b);
-
-  printf("\npb pb\n\n");
-  ft_pb(&b, &a);
-  ft_pb(&b, &a);
+  ft_stackadd_back(&b, ft_stacknew(6));
+  ft_stackadd_back(&a, ft_stacknew(8));
+  ft_stackadd_back(&a, ft_stacknew(7));*/
 
   print_stacks(a, b);
 
   ft_free(&a);
   ft_free(&b);
-  exit(0);
 }

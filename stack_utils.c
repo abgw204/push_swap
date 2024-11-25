@@ -9,6 +9,7 @@ t_stack	*ft_stacknew(int content)
 		ft_error(3);
 	new_node->nbr = content;
 	new_node->next = NULL;
+	new_node->prev = NULL;
 	return (new_node);
 }
 
@@ -47,11 +48,20 @@ void	ft_stackadd_back(t_stack **stack, t_stack *new)
 	new->prev = current;
 }
 
-void	ft_lstadd_front(t_stack **lst, t_stack **new)
+void	ft_stackadd_front(t_stack **stack, t_stack **new)
 {
-	if (lst == NULL || new == NULL)
+	if (stack == NULL || new == NULL)
 		return ;
-	(*new)->next = *lst;
+	(*new)->next = *stack;
 	(*new)->prev = NULL;
-	*lst = *new;
+	*stack = *new;
+}
+
+t_stack *ft_stacklast(t_stack *stack)
+{
+	if (!stack)
+		return (NULL);
+	while (stack->next)
+		stack = stack->next;
+	return (stack);
 }
