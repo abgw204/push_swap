@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "stack.h"
 
 void ft_sort(t_stack **stack_a)
