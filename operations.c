@@ -273,21 +273,43 @@ int main()
   t_stack *a = NULL;
   t_stack *b = NULL;
 
-  /*ft_stackadd_back(&a, ft_stacknew(3));
-  ft_stackadd_back(&a, ft_stacknew(5));
+  ft_stackadd_back(&a, ft_stacknew(0));
+  ft_stackadd_back(&a, ft_stacknew(1));
+  ft_stackadd_back(&a, ft_stacknew(2));
+  ft_stackadd_back(&a, ft_stacknew(3));
   ft_stackadd_back(&a, ft_stacknew(4));
-  ft_stackadd_back(&a, ft_stacknew(9));
-  ft_stackadd_back(&a, ft_stacknew(8));
+  ft_stackadd_back(&a, ft_stacknew(5));
+  ft_stackadd_back(&a, ft_stacknew(6));
   ft_stackadd_back(&a, ft_stacknew(7));
+  ft_stackadd_back(&a, ft_stacknew(8));
+  ft_stackadd_back(&a, ft_stacknew(9));
 
-  ft_stackadd_back(&b, ft_stacknew(9));
+  /*ft_stackadd_back(&b, ft_stacknew(9));
   ft_stackadd_back(&b, ft_stacknew(8));
   ft_stackadd_back(&b, ft_stacknew(7));
   ft_stackadd_back(&b, ft_stacknew(6));
   ft_stackadd_back(&a, ft_stacknew(8));
   ft_stackadd_back(&a, ft_stacknew(7));*/
-
+ 
+  ft_ra(&a);
+  ft_ra(&a);
+  ft_ra(&a);
+  ft_ra(&a);
+  ft_ra(&a);
+  ft_ra(&a);
+  ft_ra(&a);
+  ft_ra(&a);
+  ft_ra(&a);
+  ft_ra(&a);
   print_stacks(a, b);
+  printf("\n\n");
+  int t = 97;
+  int pos = 0;
+  while (pos <= 7)
+  {
+    int bit = (t >> pos++) & 1;
+    printf("%d", bit);
+  }
 
   ft_free(&a);
   ft_free(&b);
