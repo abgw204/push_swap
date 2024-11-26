@@ -2,8 +2,15 @@
 
 void ft_sort(t_stack **stack_a)
 {
+    if (!check_sorted(*a))
+    {
     if (ft_stacksize(*stack_a) == 2)
+    {
         ft_sa(stack_a);
+        exit(0);
+    }
+    else if (ft_stacksize == 3)
+    }
 }
 
 static void init_stack_a(t_stack **stack_a, char *argv[])
