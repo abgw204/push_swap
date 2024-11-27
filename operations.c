@@ -268,7 +268,7 @@ void print_stacks(t_stack *a, t_stack *b)
   }
 }
 
-int main()
+/*int main()
 {
   t_stack *a = NULL;
   t_stack *b = NULL;
@@ -284,12 +284,12 @@ int main()
   ft_stackadd_back(&a, ft_stacknew(8));
   ft_stackadd_back(&a, ft_stacknew(9));
 
-  /*ft_stackadd_back(&b, ft_stacknew(9));
+  ft_stackadd_back(&b, ft_stacknew(9));
   ft_stackadd_back(&b, ft_stacknew(8));
   ft_stackadd_back(&b, ft_stacknew(7));
   ft_stackadd_back(&b, ft_stacknew(6));
   ft_stackadd_back(&a, ft_stacknew(8));
-  ft_stackadd_back(&a, ft_stacknew(7));*/
+  ft_stackadd_back(&a, ft_stacknew(7));
  
   ft_ra(&a);
   ft_ra(&a);
@@ -313,4 +313,4 @@ int main()
 
   ft_free(&a);
   ft_free(&b);
-}
+}*/

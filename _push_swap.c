@@ -1,15 +1,19 @@
 #include "stack.h"
 
-void ft_sort(t_stack **stack_a)
+void ft_sort(t_stack **a)
 {
+    int a_size = ft_stacksize(*a);
     if (!check_sorted(*a))
     {
-    if (ft_stacksize(*stack_a) == 2)
-    {
-        ft_sa(stack_a);
-        exit(0);
-    }
-    else if (ft_stacksize == 3)
+        if (a_size == 2)
+        {
+            ft_sa(a);
+            exit(0);
+        }
+        else if (a_size == 3)
+        {
+            sort_three(a);
+        }
     }
 }
 
@@ -31,39 +35,21 @@ static void init_stack_a(t_stack **stack_a, char *argv[])
         ft_free(stack_a);
         ft_error(2);
     }
-    for (int i = 0; i < 9; i++)
-    {
-        printf("%d\n", (*stack_a)->nbr);
-        (*stack_a) = (*stack_a)->next;
-    }
-    exit(1);
 }
 int main(int argc, char *argv[])
 {
-    t_stack *stack_a;
-    //t_stack *stack_b;
+    t_stack *a;
+    t_stack *b;
 
-    stack_a = NULL;
-    //stack_b = NULL;
+    a = NULL;
+    b = NULL;
 
     if (argc == 1 || (argc == 2 && !argv[1][0]))
         ft_error(0);
     else if (argc == 2)
         argv = ft_split(argv[1], ' ');
-    init_stack_a(&stack_a, argv + 1);
-    ft_sort(&stack_a);
-    exit(1);
-    /* while (stack_a)
-    {
-        printf("%ld, ", stack_a->nbr);
-        stack_a = stack_a->next;
-        if (!stack_a->next)
-        {
-            printf("%ld", stack_a->nbr);
-            stack_a = stack_a->next;
-        }
-    }
-    */
-    ft_free(&stack_a);
-    exit(1);
+    init_stack_a(&a, argv + 1);
+    ft_sort(&a);
+    print_stacks(a, b);
+    ft_free(&a);
 }

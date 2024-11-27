@@ -1,3 +1,5 @@
+#include "stack.h"
+
 void	*ft_calloc(size_t num, size_t size)
 {
 	void			*ptr;
