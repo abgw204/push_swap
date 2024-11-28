@@ -11,7 +11,8 @@ FUNCTIONS = _push_swap.c \
 			check_sorted.c \
 			find_min_and_max.c \
 			ft_utils.c \
-			sort_three.c
+			sort_three.c \
+			binary_radix.c
  
 OBJS = _push_swap.o \
 		atoi2.o \
@@ -24,7 +25,8 @@ OBJS = _push_swap.o \
 		check_sorted.o \
 		find_min_and_max.o \
 		ft_utils.o \
-		sort_three.o
+		sort_three.o \
+		binary_radix.o
 
 NAME = push_swap.a
 

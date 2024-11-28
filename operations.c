@@ -52,7 +52,7 @@ void ft_ss(t_stack **a, t_stack **b)
   write(1, "ss\n", 3);
 }
 
-// Empurra 1 node do stack A para o stack B
+// Empurra 1 node do stack B para o stack A
 
 void ft_pa(t_stack **stack1, t_stack **stack2)
 {
@@ -76,7 +76,7 @@ void ft_pa(t_stack **stack1, t_stack **stack2)
   write(1, "pa\n", 3);
 }
 
-// Empurra 1 node do stack B para o stack A
+// Empurra 1 node do stack A para o stack B
 
 void ft_pb(t_stack **stack1, t_stack **stack2)
 {
@@ -198,9 +198,9 @@ void print_stacks(t_stack *a, t_stack *b)
   int diff_size = a_size > b_size ? (a_size - b_size) : (b_size - a_size);
   int i = 0;
 
-  printf("Stack A size: %d\n", a_size);
-  printf("\nStack B size: %d\n\n", b_size);
-  printf("A   B:\n\n");
+  //printf("Stack A size: %d\n", a_size);
+  //printf("\nStack B size: %d\n\n", b_size);
+  printf("\nA   B:\n\n");
 
   if (!a || !b)
   {
@@ -291,17 +291,9 @@ void print_stacks(t_stack *a, t_stack *b)
   ft_stackadd_back(&a, ft_stacknew(8));
   ft_stackadd_back(&a, ft_stacknew(7));
  
-  ft_ra(&a);
-  ft_ra(&a);
-  ft_ra(&a);
-  ft_ra(&a);
-  ft_ra(&a);
-  ft_ra(&a);
-  ft_ra(&a);
-  ft_ra(&a);
-  ft_ra(&a);
-  ft_ra(&a);
+  ft_pa(&b, &a);
   print_stacks(a, b);
+  exit(1);
   printf("\n\n");
   int t = 97;
   int pos = 0;
