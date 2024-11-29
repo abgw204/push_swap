@@ -2,7 +2,8 @@
 
 void ft_sort(t_stack **a, t_stack **b)
 {
-    int a_size = ft_stacksize(*a);
+    int a_size;
+    a_size = ft_stacksize(*a);
     if (!check_sorted(*a))
     {
         if (a_size == 2)
@@ -14,7 +15,7 @@ void ft_sort(t_stack **a, t_stack **b)
             sort_three(a);
         else
         {
-            binary_radix(a, b, a_size);
+            binary_radix(a, b);
         }
     }
 }

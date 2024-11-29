@@ -108,6 +108,8 @@ void ft_ra(t_stack **a)
   t_stack *temp;
   t_stack *last_node;
 
+  if (ft_stacksize(*a) == 1)
+    return ;
   temp = (*a)->next;
   temp->prev = NULL;
   last_node = ft_stacklast(*a);
@@ -126,6 +128,8 @@ void ft_rb(t_stack **b)
   t_stack *temp;
   t_stack *last_node;
 
+  if (ft_stacksize(*b) == 1)
+    return ;
   temp = (*b)->next;
   temp->prev = NULL;
   last_node = ft_stacklast(*b);

@@ -16,7 +16,7 @@ void	ft_stackadd_back(t_stack **stack, t_stack *new);
 t_stack	*ft_stacknew(int nbr);
 void	*ft_calloc(size_t num, size_t size);
 void	sort_three(t_stack **a);
-void binary_radix(t_stack **a, t_stack **b, int a_size);
+void binary_radix(t_stack **a, t_stack **b);
 void print_stacks(t_stack *a, t_stack *b);
 void ft_sa(t_stack **a);
 void ft_sb(t_stack **b);

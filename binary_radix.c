@@ -1,53 +1,55 @@
 #include "stack.h"
-void binary_radix(t_stack **a, t_stack **b, int a_size)
+
+int reverse_radix(t_stack **b, int toggle)
 {
-    int size_before;
     int bit;
-    int pushes;
+
+    bit = (*b)->nbr >> (toggle + 1) & 1;
+    if (bit == 1)
+        return (1);
+    return (0);
+}
+
+void binary_radix(t_stack **a, t_stack **b)
+{
+    int a_size;
     int toggle;
     int operations;
+    int b_size;
 
-    bit = 0;
-    size_before = a_size;
-    pushes = 0;
     toggle = 0;
     operations = 0;
-    while (1)
+    while (toggle < 32)
     {
-        a_size = size_before;
+        a_size = ft_stacksize(*a);
         while (a_size)
         {
-            bit = (*a)->nbr >> toggle & 1;
-            if (bit == 1)
+            if (((*a)->nbr >> toggle) & 1)
             {
                 ft_ra(a);
-                //print_stacks(*a, *b);
                 operations++;
-                a_size--;
-                if (!*b)
-                {
-                    if (check_sorted(*a))
-                        return ;
-                }
             }
             else
             {
                 ft_pb(a, b);
                 operations++;
                 //print_stacks(*a, *b);
-                pushes++;
-                a_size--;
             }
             if (!a_size)
                 break ;
+            a_size--;
         }
-        while (pushes > 0)
+        b_size = ft_stacksize(*b);
+        while (b_size)
         {
-            ft_pa(b, a);
-            pushes--;
-            operations++;
-            //print_stacks(*a, *b);
+            if (((*b)->nbr >> (toggle + 1) & 1) == 1)
+                ft_pa(b, a);
+            else
+                ft_rb(b);
+            b_size--;
         }
+        while (*b)
+            ft_pa(b, a);
         toggle++;
         if (check_sorted(*a))
         {
