@@ -1,6 +1,6 @@
 #include "stack.h"
 
-static int calculate_max_bits(t_stack *stack)
+static int calculate_max_bit(t_stack *stack)
 {
     int max = 0;
     int bits = 0;
@@ -15,11 +15,7 @@ static int calculate_max_bits(t_stack *stack)
         bits++;
     return bits;
 }
-// RESOLVER O PROBLEMA COM NÚMEROS NEGATIVOS
-// {
-//      IMPLEMENTAR INDICES
-//      IMPLEMENTAR A NORMALIZAÇÃO (INICIALIZAR COM INDICES RESOLVERÁ O PROBLEMA DOS NEGATIVOS, no mais, é isso)
-// }
+
 void binary_radix(t_stack **a, t_stack **b)
 {
     int a_size;
@@ -30,7 +26,7 @@ void binary_radix(t_stack **a, t_stack **b)
     toggle = 0;
     operations = 0;
     //b_size = 0;
-    while (toggle < calculate_max_bits(*a))
+    while (toggle < calculate_max_bit(*a))
     {
         a_size = ft_stacksize(*a);
         while (a_size--)
@@ -47,16 +43,13 @@ void binary_radix(t_stack **a, t_stack **b)
                 //print_stacks(*a, *b);
             }
         }
-       // b_size = ft_stacksize(*b);
-        while (ft_stacksize(*b))
-        {
+        while (*b)
             ft_pa(b, a);
-            operations++;
-        }
         toggle++;
         if (check_sorted(*a))
         {
-            //printf("%d", operations);
+            printf("%d", operations);
+            print_stacks(*a, *b);
             return ;
         }
     }
