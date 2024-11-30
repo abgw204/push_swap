@@ -10,13 +10,14 @@ t_stack *find_min(t_stack *stack_a)
     min = 2147483649;
     while (stack_a)
     {
-        if (stack_a->nbr < min)
+        if (stack_a->nbr < min && stack_a->have_index == false)
         {
             min = stack_a->nbr;
             min_node = stack_a;
         }
         stack_a = stack_a->next;
     }
+    min_node->have_index = true;
     return (min_node);
 }
 

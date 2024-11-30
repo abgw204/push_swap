@@ -1,6 +1,22 @@
 #include "stack.h"
 
-void ft_sort(t_stack **a, t_stack **b)
+static void give_indexes(t_stack *a)
+{
+    t_stack *current;
+    int a_size;
+    int index;
+
+    a_size = ft_stacksize(a);
+    index = 0;
+    while (a_size > 0)
+    {
+        current = find_min(a);
+        current->index = index++;
+        a_size--;
+    }
+}
+
+static void ft_sort(t_stack **a, t_stack **b)
 {
     int a_size;
     a_size = ft_stacksize(*a);
@@ -56,7 +72,8 @@ int main(int argc, char *argv[])
     }
     else
         init_stack_a(&a, argv + 1);
+    give_indexes(a);
     ft_sort(&a, &b);
-    print_stacks(a, b);
+    //print_stacks(a, b);
     ft_free(&a);
 }

@@ -7,6 +7,7 @@ typedef struct s_stack
 {
 	int            nbr;
     int            index;
+    bool            have_index;
 	struct s_stack	*next;
     struct s_stack  *prev;
 } t_stack;
@@ -37,5 +38,4 @@ int	atoi2(const char *str);
 char	**ft_split(char const *s, char c);
 void ft_error(int error_status);
 void ft_free(t_stack **stack);
-void ft_sort(t_stack **a, t_stack **b);
 void ft_sa(t_stack **stack_a);

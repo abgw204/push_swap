@@ -7,8 +7,8 @@ static int calculate_max_bits(t_stack *stack)
 
     while (stack)
     {
-        if (stack->nbr > max)
-            max = stack->nbr;
+        if (stack->index > max)
+            max = stack->index;
         stack = stack->next;
     }
     while ((max >> bits) != 0)
@@ -25,16 +25,17 @@ void binary_radix(t_stack **a, t_stack **b)
     int a_size;
     int toggle;
     int operations;
-    int b_size;
+    //int b_size;
 
     toggle = 0;
     operations = 0;
+    //b_size = 0;
     while (toggle < calculate_max_bits(*a))
     {
         a_size = ft_stacksize(*a);
         while (a_size--)
         {
-            if (((*a)->nbr >> toggle) & 1)
+            if (((*a)->index >> toggle) & 1)
             {
                 ft_ra(a);
                 operations++;
@@ -46,7 +47,7 @@ void binary_radix(t_stack **a, t_stack **b)
                 //print_stacks(*a, *b);
             }
         }
-        b_size = ft_stacksize(*b);
+       // b_size = ft_stacksize(*b);
         while (ft_stacksize(*b))
         {
             ft_pa(b, a);
@@ -55,7 +56,7 @@ void binary_radix(t_stack **a, t_stack **b)
         toggle++;
         if (check_sorted(*a))
         {
-            printf("%d", operations);
+            //printf("%d", operations);
             return ;
         }
     }

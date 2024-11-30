@@ -54,6 +54,7 @@ void	ft_stackadd_front(t_stack **stack, t_stack **new)
 		return ;
 	(*new)->next = *stack;
 	(*new)->prev = NULL;
+	(*stack)->prev = *new;
 	*stack = *new;
 }
 
