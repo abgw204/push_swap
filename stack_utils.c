@@ -6,7 +6,7 @@ t_stack	*ft_stacknew(int content)
 
 	new_node = (t_stack *)malloc(sizeof(t_stack));
 	if (!new_node)
-		ft_error(3);
+		return (NULL);
 	new_node->nbr = content;
 	new_node->next = NULL;
 	new_node->prev = NULL;

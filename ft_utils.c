@@ -31,5 +31,7 @@ int ft_strcmp(const char *s1, char *s2)
 			return (s1[i] - s2[i]);
 		i++;
 	}
+	if (s1[i] != s2[i])
+		return (1);
 	return (0);
 }

@@ -1,6 +1,6 @@
 #include "stack.h"
 
-t_stack *find_min(t_stack *stack_a)
+t_stack *find_min_and_next(t_stack *stack_a)
 {
     long    min;
     t_stack *min_node;

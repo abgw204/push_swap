@@ -38,14 +38,14 @@ void binary_radix(t_stack **a, t_stack **b)
             }
             else
             {
-                ft_pb(a, b);
+                ft_push(a, b);
                 operations++;
                 //print_stacks(*a, *b);
             }
         }
         while (*b)
         {
-            ft_pa(b, a);
+            ft_push(b, a);
             operations++;
         }
         toggle++;

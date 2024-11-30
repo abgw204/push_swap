@@ -10,7 +10,7 @@ static void give_indexes(t_stack *a)
     index = 0;
     while (a_size > 0)
     {
-        current = find_min(a);
+        current = find_min_and_next(a);
         current->index = index++;
         a_size--;
     }
@@ -32,26 +32,27 @@ static void ft_sort(t_stack **a, t_stack **b)
     }
 }
 
-static void init_stack_a(t_stack **stack_a, char *argv[])
+static void init_stack_a(t_stack **a, char *argv[], int quoted)
 {
     int i;
     int j;
+    int error;
 
     i = 0;
     j = 0;
+    error = 0;
     while (argv[i])
     {
-        j = atoi2(argv[i]);
-        if (j == 0 && argv[i][0] != '0')
-            ft_error();
-        ft_stackadd_back(stack_a, ft_stacknew(j));
+        j = atoi2(argv[i], &error);
+        ft_stackadd_back(a, ft_stacknew(j));
         i++;
     }
-    if (!stack_a || check_duplicate(*stack_a))
-    {
-        ft_free(stack_a);
-        ft_error();
-    }
+    if (quoted)
+        ft_free_split(argv);
+    if (error == 1)
+        if_error_free_and_exit(a);
+    if (!a || check_duplicate(*a))
+        if_error_free_and_exit(a);
 }
 int main(int argc, char *argv[])
 {
@@ -60,18 +61,15 @@ int main(int argc, char *argv[])
 
     a = NULL;
     b = NULL;
-
     if (argc == 1)
         return (0);
-    if (argc == 2 && !argv[1][0])
-        ft_error();
-    else if (argc == 2)
+    if (argc == 2)
     {
         argv = ft_split(argv[1], ' ');
-        init_stack_a(&a, argv);
+        init_stack_a(&a, argv, 1);
     }
     else
-        init_stack_a(&a, argv + 1);
+        init_stack_a(&a, argv + 1, 0);
     give_indexes(a);
     ft_sort(&a, &b);
     ft_free(&a);
