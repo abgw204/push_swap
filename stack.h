@@ -36,6 +36,7 @@ void	ft_stackadd_front(t_stack **lst, t_stack **new);
 t_stack *ft_stacklast(t_stack *stack);
 int	atoi2(const char *str);
 char	**ft_split(char const *s, char c);
-void ft_error(int error_status);
+int ft_strcmp(const char *s1, char *s2);
+void ft_error();
 void ft_free(t_stack **stack);
 void ft_sa(t_stack **stack_a);

@@ -44,14 +44,17 @@ void binary_radix(t_stack **a, t_stack **b)
             }
         }
         while (*b)
+        {
             ft_pa(b, a);
+            operations++;
+        }
         toggle++;
         if (check_sorted(*a))
         {
-            printf("%d", operations);
-            print_stacks(*a, *b);
+            //printf("%d", operations);
+            //print_stacks(*a, *b);
             return ;
         }
     }
-    printf("%d", operations);
+    //printf("%d", operations);
 }
