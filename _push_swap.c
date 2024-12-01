@@ -36,24 +36,27 @@ static void init_stack_a(t_stack **a, char *argv[], int quoted)
 {
     int i;
     int j;
-    int error;
+    //int error;
 
     i = 0;
     j = 0;
-    error = 0;
+    //error = 0;
     while (argv[i])
     {
-        j = atoi2(argv[i], &error);
+        j = atoi2(argv[i], a);
         ft_stackadd_back(a, ft_stacknew(j));
         i++;
     }
     if (quoted)
         ft_free_split(argv);
-    if (error == 1)
-        if_error_free_and_exit(a);
+    //if (error == 1)
+      //  if_error_free_and_exit(a);
     if (!a || check_duplicate(*a))
         if_error_free_and_exit(a);
 }
+
+#include <stdio.h>
+
 int main(int argc, char *argv[])
 {
     t_stack *a;

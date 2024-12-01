@@ -27,7 +27,7 @@ void ft_sa(t_stack **a)
     write(1, "sa\n", 3);
 }
 
-void ft_push(t_stack **stack1, t_stack **stack2)
+void ft_push(t_stack **stack1, t_stack **stack2, char a_b)
 {
   t_stack *temp;
 
@@ -46,7 +46,10 @@ void ft_push(t_stack **stack1, t_stack **stack2)
     ft_stackadd_front(stack2, stack1);
     *stack1 = temp;
   }
-  write(1, "pa\n", 3);
+  if (a_b == 'b')
+    write(1, "pb\n", 3);
+  else
+    write(1, "pa\n", 3);
 }
 
 void ft_ra(t_stack **a)

@@ -7,7 +7,7 @@ static int	ft_isdigit(int c)
 	return (0);
 }
 
-int	atoi2(const char *str, int *error)
+int	atoi2(const char *str, t_stack **a)
 {
 	long	res;
 	int	sign;
@@ -15,7 +15,7 @@ int	atoi2(const char *str, int *error)
 	res = 0;
 	sign = 1;
 	if (!ft_strcmp(str, "-"))
-		*error = 1;
+		if_error_free_and_exit(a);
 	while (*str == ' ' || (*str >= 9 && *str <= 13))
 		str++;
 	if (!(*str >= '0' && *str <= '9'))
@@ -23,16 +23,16 @@ int	atoi2(const char *str, int *error)
 		if (*str == '-')
 			sign = -1;
 		else if (*str != '+')
-			*error = 1;
+			if_error_free_and_exit(a);
 		str++;
 	}
 	while (*str)
     {
         if (!ft_isdigit(*str))
-            *error = 1;
+            if_error_free_and_exit(a);
 		res = res * 10 + (*str++ - 48);
     }
     if ((res * sign) > 2147483647 || (res * sign) < -2147483648)
-		*error = 1;
+		if_error_free_and_exit(a);
 	return (res * sign);
 }
