@@ -28,17 +28,20 @@ OBJS = _push_swap.o \
 		sort_three.o \
 		binary_radix.o
 
-NAME = push_swap.a
+LIB = push_swap.a
+
+NAME = push_swap
 
 .c.o:
 	cc $(FLAGS) -c $< -o $(<:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar -rc $(NAME) $(OBJS)
+	ar -rc $(LIB) $(OBJS)
+	cc $(FLAGS) _push_swap.c push_swap.a -o $(NAME)
 clean:
-	rm -f $(OBJS) $(BONUS_OBJS)
+	rm -f $(OBJS)
 fclean:
-	rm -f $(OBJS) $(NAME) $(BONUS_OBJS)
+	rm -f $(OBJS) $(LIB) $(NAME)
 
 re: fclean all
