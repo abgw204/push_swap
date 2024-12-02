@@ -24,9 +24,11 @@ static void ft_sort(t_stack **a, t_stack **b)
     if (!check_sorted(*a))
     {
         if (a_size == 2)
-            ft_sa(a);
+            ft_swap(a, 'a');
         else if (a_size == 3)
             sort_three(a);
+        else if (a_size == 5)
+            sort_five(a, b);
         else
             binary_radix(a, b);
     }
@@ -35,12 +37,10 @@ static void ft_sort(t_stack **a, t_stack **b)
 static void init_stack_a(t_stack **a, char *argv[], int quoted)
 {
     int i;
-    int j;
-    //int error;
+    long j;
 
     i = 0;
     j = 0;
-    //error = 0;
     while (argv[i])
     {
         j = atoi2(argv[i], a);
@@ -49,8 +49,6 @@ static void init_stack_a(t_stack **a, char *argv[], int quoted)
     }
     if (quoted)
         ft_free_split(argv);
-    //if (error == 1)
-      //  if_error_free_and_exit(a);
     if (!a || check_duplicate(*a))
         if_error_free_and_exit(a);
 }
@@ -76,4 +74,5 @@ int main(int argc, char *argv[])
     give_indexes(a);
     ft_sort(&a, &b);
     ft_free(&a);
+    ft_free(&b);
 }

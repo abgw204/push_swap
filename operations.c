@@ -1,4 +1,5 @@
 #include "stack.h"
+#include <stdio.h>
 /*  swap a = sa | DONE
     swap b = sb | DONE
     swap a and b = ss | DONE
@@ -14,7 +15,7 @@
 
 // Faz um swap nos dois primeiros nodes do stack A
 
-void ft_sa(t_stack **a)
+void ft_swap(t_stack **a, char a_b)
 {
     t_stack *temp;
 
@@ -24,7 +25,16 @@ void ft_sa(t_stack **a)
     temp->next = *a;
     temp->prev = NULL;
     *a = temp;
-    write(1, "sa\n", 3);
+    if (a_b == 'a')
+      write(1, "sa\n", 3);
+    else
+      write(1, "sb\n", 3);
+}
+
+static void push_util(t_stack **stack1, t_stack **stack2)
+{
+  ft_stackadd_front(stack2, stack1);
+  *stack1 = NULL;
 }
 
 void ft_push(t_stack **stack1, t_stack **stack2, char a_b)
@@ -39,13 +49,16 @@ void ft_push(t_stack **stack1, t_stack **stack2, char a_b)
     *stack1 = temp;
     (*stack1)->prev = NULL;
   }
-  else
+  else if ((*stack1)->next)
   {
     temp = (*stack1)->next;
+    temp->prev = NULL;
     (*stack1)->next = NULL;
     ft_stackadd_front(stack2, stack1);
     *stack1 = temp;
   }
+  else
+    push_util(stack1, stack2);
   if (a_b == 'b')
     write(1, "pb\n", 3);
   else

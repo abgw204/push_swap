@@ -12,7 +12,8 @@ FUNCTIONS = _push_swap.c \
 			find_min_and_max.c \
 			ft_utils.c \
 			sort_three.c \
-			binary_radix.c
+			binary_radix.c \
+			sort_five.c
  
 OBJS = _push_swap.o \
 		atoi2.o \
@@ -26,7 +27,8 @@ OBJS = _push_swap.o \
 		find_min_and_max.o \
 		ft_utils.o \
 		sort_three.o \
-		binary_radix.o
+		binary_radix.o \
+		sort_five.o
 
 LIB = push_swap.a
 
