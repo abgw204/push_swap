@@ -1,5 +1,4 @@
 #include "stack.h"
-#include <stdio.h>
 
 static void five_sort(t_stack **a, t_stack **b, t_stack *temp)
 {
@@ -24,9 +23,7 @@ void sort_five(t_stack **a, t_stack **b)
     temp = *a;
 
     five_sort(a, b, temp);
-    //printf("%d", (*b)->index);
     ft_push(b, a, 'a');
     ft_ra(a);
     ft_push(b, a, 'a');
-    //printf("%d\n", check_sorted(*a));
 }

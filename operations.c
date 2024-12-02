@@ -1,19 +1,4 @@
 #include "stack.h"
-#include <stdio.h>
-/*  swap a = sa | DONE
-    swap b = sb | DONE
-    swap a and b = ss | DONE
-    push a = pa | DONE
-    push b = pb | DONE
-    rotate a = ra | DONE
-    rotate b = rb | DONE
-    rotate and b = rr | DONE
-    reverse rotate a = rra | DONE
-    reverse rotate b = rrb | DONE
-    reverse rotate a and b = rrr | DONE
-*/
-
-// Faz um swap nos dois primeiros nodes do stack A
 
 void ft_swap(t_stack **a, char a_b)
 {

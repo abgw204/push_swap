@@ -1,4 +1,5 @@
 #include "stack.h"
+
 int check_duplicate(t_stack *stack_a)
 {
     t_stack *next;

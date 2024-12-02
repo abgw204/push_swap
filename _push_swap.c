@@ -53,8 +53,6 @@ static void init_stack_a(t_stack **a, char *argv[], int quoted)
         if_error_free_and_exit(a);
 }
 
-#include <stdio.h>
-
 int main(int argc, char *argv[])
 {
     t_stack *a;
