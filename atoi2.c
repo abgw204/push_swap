@@ -7,7 +7,7 @@ static int	ft_isdigit(int c)
 	return (0);
 }
 
-long	atoi2(const char *str, t_stack **a)
+int	atoi2(const char *str, t_stack **a)
 {
 	long	res;
 	int	sign;

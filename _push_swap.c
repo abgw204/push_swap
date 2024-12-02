@@ -37,7 +37,7 @@ static void ft_sort(t_stack **a, t_stack **b)
 static void init_stack_a(t_stack **a, char *argv[], int quoted)
 {
     int i;
-    long j;
+    int j;
 
     i = 0;
     j = 0;

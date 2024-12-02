@@ -4,7 +4,7 @@
 
 typedef struct s_stack
 {
-	long            nbr;
+	int            nbr;
     int            index;
     bool            have_index;
     bool            is_min;
@@ -34,7 +34,7 @@ void is_max(t_stack *stack_a);
 t_stack *find_max(t_stack *stack_a);
 void	ft_stackadd_front(t_stack **lst, t_stack **new);
 t_stack *ft_stacklast(t_stack *stack);
-long	atoi2(const char *str, t_stack **a);
+int	atoi2(const char *str, t_stack **a);
 char	**ft_split(char const *s, char c);
 int ft_strcmp(const char *s1, char *s2);
 void ft_free(t_stack **stack);
