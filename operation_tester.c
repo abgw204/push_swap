@@ -10,6 +10,7 @@
 // Se forem do mesmo tamanho, basta printar enquanto i for menor
 // que stack A ou B, tanto faz (isso está no else).
 
+
 void print_stacks(t_stack *a, t_stack *b)
 {
   int a_size = ft_stacksize(a);
