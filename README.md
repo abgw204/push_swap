@@ -27,3 +27,11 @@ make
 
 # Run with a list of numbers
 ./push_swap 3 2 1
+```
+## 🎯 Project Goals <br>
+🧩 Write a program that sorts integers using only stack operations.
+
+🧠 Optimize for the least number of instructions.
+
+🚫 No built-in sort functions, no external libraries.
+
